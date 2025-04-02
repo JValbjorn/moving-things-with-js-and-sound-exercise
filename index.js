@@ -2,7 +2,7 @@
 "use strict";
 
 const dodger = document.getElementById("dodger");
-dodger.style.backgroundColor = "#FF69B4";
+dodger.style.backgroundColor = "rgb(113, 190, 165)";
 
 document.addEventListener("keydown", function(e) {
     if (e.key === "ArrowLeft") {
@@ -28,6 +28,24 @@ document.addEventListener("keydown", function(e) {
             if (left < 360) {
                 dodger.style.left = `${left + 1}px`;
              }}
+
+              function moveDodgerUp() {
+                 const bottomNumbers = dodger.style.bottom.replace("px", ""); 
+                 const bottom = parseInt(bottomNumbers, 10);
+             
+                 if (bottom < 360) { // Adjust the limit as needed
+                     dodger.style.bottom = `${bottom + 1}px`; // Move up
+                 }
+             }
+             
+             function moveDodgerDown() {
+                 const bottomNumbers = dodger.style.bottom.replace("px", ""); 
+                 const bottom = parseInt(bottomNumbers, 10);
+             
+                 if (bottom > 0) { // Prevent moving below the screen
+                     dodger.style.bottom = `${bottom - 1}px`; // Move down
+                 }
+             }
              
              document.addEventListener("keydown", function (e) {
                  if (e.key === "ArrowLeft") {
